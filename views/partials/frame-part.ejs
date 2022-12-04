@@ -1,0 +1,18 @@
+<iframe src="/api/v1/files/<%= id %>" frameborder="0" class="iframe"></iframe>
+<div class="form-container p-5">
+    <h3 class="mt-3">Оставить оценку</h3>
+    <form id="upload-form">
+        <div class="input-group w-50 mt-4">
+            <span class="input-group-text">Комментарий</span>
+            <textarea name="comment" class="form-control " aria-label="Comment"></textarea>
+        </div>
+
+        <div class="input-group mt-3 w-50">
+            <span class="input-group-text">Оценка</span>
+            <input name="mark" type="text" class="form-control" aria-label="Mark" placeholder="1 - 5">
+            <input name="id" value="<%= id %>" class="display-none">
+        </div>
+        
+        <button type="button" class="btn btn-outline-success mt-3 btn-upload">Отправить</button>
+    </form>
+</div>
