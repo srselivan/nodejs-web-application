@@ -1,6 +1,7 @@
 CREATE TABLE files (
     id serial NOT NULL,
     filename varchar(255) NOT NULL,
+  	count_marks integer NOT NULL,
     PRIMARY KEY (id)
 );
 

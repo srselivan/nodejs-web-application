@@ -5,7 +5,7 @@ async function upload_file(req, res) {
         const filedata = req.file;     
 
         const query = {
-            text: 'INSERT INTO files VALUES(DEFAULT, $1)',
+            text: 'INSERT INTO files VALUES(DEFAULT, $1, 0)',
             params: [filedata.filename],
         }
 
@@ -24,8 +24,14 @@ async function set_mark(req, res) {
             text: 'INSERT INTO marks VALUES($1, $2, $3)',
             params: [req.body.id, req.body.mark, req.body.comment],
         }
-
         await db.query(query.text, query.params)
+
+        const queryUpdate = {
+            text: 'UPDATE files SET count_marks = (SELECT count_marks FROM files WHERE id = $1) + 1 WHERE id = $1',
+            params: [req.body.id],
+        }
+        await db.query(queryUpdate.text, queryUpdate.params)
+
         res.sendStatus(200)
 
     } catch(error) {

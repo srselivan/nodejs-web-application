@@ -34,7 +34,7 @@ async function get_files_page(req, res) {
 async function get_list_files(req, res) {
     try {
         const query = {
-            text: 'SELECT * FROM files LIMIT 3',
+            text: 'SELECT id, filename from files ORDER BY count_marks LIMIT 3',
             params: [],
         }
 

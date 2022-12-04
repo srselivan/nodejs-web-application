@@ -22,3 +22,7 @@
 .display-none{
     display: none !important;
 }
+
+.result-container{
+    height: 50px;
+}

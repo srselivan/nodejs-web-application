@@ -16,9 +16,11 @@ function handleClickUpload(event) {
 }
 
 function createUploadResult(result){
-    const relative = document.getElementsByClassName("form-container")[0]
+    try{ document.getElementsByClassName("upload-result-p")[0].remove() } catch {}
+
+    const relative = document.getElementsByClassName("result-container")[0]
     const p = document.createElement("p")
-    p.classList.add("mt-3")
+    p.classList.add("mt-3", "upload-result-p")
     
     if(result) {
         p.innerHTML = "Success"
@@ -42,7 +44,11 @@ function handleClickGetList(event) {
 }
 
 function addListElement(data){
-    const ul = document.getElementsByClassName("files-list")[0]
+    try{ document.getElementsByClassName("files-list")[0].remove() } catch {}
+
+    const relative = document.getElementsByClassName("ul-container")[0]
+    const ul = document.createElement("ul")
+    ul.classList.add("list-group", "p-0", "files-list")
 
     data.forEach(element => {
         const li = document.createElement("li")
@@ -52,6 +58,8 @@ function addListElement(data){
         li.innerHTML = element.filename
         ul.appendChild(li)
     })
+
+    relative.appendChild(ul)
 }
 
 function openInNewTab(url) {
